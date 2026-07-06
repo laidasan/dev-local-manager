@@ -13,6 +13,15 @@ struct ProjectListView: View {
             Label(project.name, systemImage: "folder.fill")
                 .tag(project.name)
                 .contextMenu {
+                    Button {
+                        viewModel.selectedProject = project
+                        viewModel.isEditing = true
+                    } label: {
+                        Label("編輯", systemImage: "pencil")
+                    }
+
+                    Divider()
+
                     Button(role: .destructive) {
                         viewModel.deleteProject(project)
                     } label: {

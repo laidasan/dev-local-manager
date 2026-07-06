@@ -8,6 +8,7 @@ final class ProjectListViewModel {
     var selectedProject: ProjectConfig?
     var errorMessage: String?
     var showError = false
+    var isEditing = false
     var showOverwriteAlert = false
     var pendingImportURL: URL?
     var pendingProjectName: String?

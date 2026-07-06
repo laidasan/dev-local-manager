@@ -23,6 +23,7 @@ targets:
         CURRENT_PROJECT_VERSION: 1
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.developer-tools"
         SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - package: Yams
     entitlements:

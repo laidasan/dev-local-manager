@@ -64,6 +64,16 @@ final class ConfigService {
         return config
     }
 
+    func saveProjectConfig(_ config: ProjectConfig) throws {
+        let fileName = config.name
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+            + ".yaml"
+        let destURL = projectsDirectory.appendingPathComponent(fileName)
+        let yamlString = try YAMLEncoder().encode(config)
+        try yamlString.write(to: destURL, atomically: true, encoding: .utf8)
+    }
+
     func deleteProject(_ project: ProjectConfig) {
         let fileName = project.name
             .lowercased()

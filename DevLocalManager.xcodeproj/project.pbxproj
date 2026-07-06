@@ -15,6 +15,7 @@
 		4961180EEBE2DBE2A7487675 /* RunningSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C820DDFD7D33C8E676F5724 /* RunningSession.swift */; };
 		5C32E95F5B813D1A51E4B36C /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845A0D407C7B5638FE54415 /* ProjectListViewModel.swift */; };
 		64959D7266ABECF9AA997F73 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B300FC49110B06D4ED9F0A /* ConfigService.swift */; };
+		6644C45AC3B6638660425265 /* ProjectEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFD6FB6BD6ED4E5830417F /* ProjectEditView.swift */; };
 		66C6201B5AF795C67B6D2D58 /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8842D944A530069A8C57D31 /* ProjectDetailViewModel.swift */; };
 		6DD7274E7CD0CF9DB7F16023 /* EnvFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E972126D56909FF7730019 /* EnvFileService.swift */; };
 		850EB78E5935D4FAE3D50AD0 /* UTType+YAML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D8A1F8F0B8B303A74A9D2 /* UTType+YAML.swift */; };
@@ -23,6 +24,7 @@
 		D0F8AA68EF7648D1A5DAF977 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EE4A978DFFAFCDFDB62B5E /* MainView.swift */; };
 		DA70633A1AB9463809977DD6 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEFDB668F691ECAEF48C86C /* ProjectDetailView.swift */; };
 		E47D37A6C20F2328F9471F9F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A4554310554922361D33A9 /* SettingsView.swift */; };
+		F2E7B36E78D9E9C834D64C74 /* ProjectEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776733730855733A9C1E323 /* ProjectEditViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,7 @@
 		3845A0D407C7B5638FE54415 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		51B300FC49110B06D4ED9F0A /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		52F9116355B636AC560A430B /* ProcessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessService.swift; sourceTree = "<group>"; };
+		5776733730855733A9C1E323 /* ProjectEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewModel.swift; sourceTree = "<group>"; };
 		717358A7BD263AC50E816E6E /* ProjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfig.swift; sourceTree = "<group>"; };
 		719ECB26499F4B07D45B3559 /* DevLocalManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DevLocalManager.entitlements; sourceTree = "<group>"; };
 		8826949EA8C97B0B11D3D75B /* LocalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		906C51CFDCC7F5ACE0FAABD1 /* DevLocalManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevLocalManagerApp.swift; sourceTree = "<group>"; };
 		A93D8A1F8F0B8B303A74A9D2 /* UTType+YAML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+YAML.swift"; sourceTree = "<group>"; };
 		ABD15F723AFE3153F1135242 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
+		DEAFD6FB6BD6ED4E5830417F /* ProjectEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditView.swift; sourceTree = "<group>"; };
 		E7E972126D56909FF7730019 /* EnvFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvFileService.swift; sourceTree = "<group>"; };
 		E8842D944A530069A8C57D31 /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		FAEFDB668F691ECAEF48C86C /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			children = (
 				11EE4A978DFFAFCDFDB62B5E /* MainView.swift */,
 				FAEFDB668F691ECAEF48C86C /* ProjectDetailView.swift */,
+				DEAFD6FB6BD6ED4E5830417F /* ProjectEditView.swift */,
 				ABD15F723AFE3153F1135242 /* ProjectListView.swift */,
 				89A4554310554922361D33A9 /* SettingsView.swift */,
 			);
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E8842D944A530069A8C57D31 /* ProjectDetailViewModel.swift */,
+				5776733730855733A9C1E323 /* ProjectEditViewModel.swift */,
 				3845A0D407C7B5638FE54415 /* ProjectListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -174,6 +180,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 67E8820750BB29856CCD1152 /* Build configuration list for PBXProject "DevLocalManager" */;
 			developmentRegion = en;
@@ -211,6 +219,8 @@
 				C39BAA86591F3B71B8346D04 /* ProjectConfig.swift in Sources */,
 				DA70633A1AB9463809977DD6 /* ProjectDetailView.swift in Sources */,
 				66C6201B5AF795C67B6D2D58 /* ProjectDetailViewModel.swift in Sources */,
+				6644C45AC3B6638660425265 /* ProjectEditView.swift in Sources */,
+				F2E7B36E78D9E9C834D64C74 /* ProjectEditViewModel.swift in Sources */,
 				029A539618AE45CF73608571 /* ProjectListView.swift in Sources */,
 				5C32E95F5B813D1A51E4B36C /* ProjectListViewModel.swift in Sources */,
 				4961180EEBE2DBE2A7487675 /* RunningSession.swift in Sources */,

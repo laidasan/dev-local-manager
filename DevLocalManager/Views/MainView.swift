@@ -3,6 +3,7 @@ import SwiftUI
 struct MainView: View {
     @State private var listViewModel = ProjectListViewModel()
     @State private var detailViewModel = ProjectDetailViewModel()
+    @State private var editViewModel = ProjectEditViewModel()
     @State private var showSettings = false
 
     var body: some View {
@@ -13,6 +14,19 @@ struct MainView: View {
                 SettingsView(
                     viewModel: listViewModel,
                     showSettings: $showSettings
+                )
+            } else if listViewModel.isEditing, let project = listViewModel.selectedProject {
+                ProjectEditView(
+                    project: project,
+                    viewModel: editViewModel,
+                    onSave: { updatedConfig in
+                        listViewModel.isEditing = false
+                        listViewModel.loadProjects()
+                        listViewModel.selectedProject = listViewModel.projects.first { $0.name == updatedConfig.name }
+                    },
+                    onCancel: {
+                        listViewModel.isEditing = false
+                    }
                 )
             } else if let project = listViewModel.selectedProject {
                 ProjectDetailView(
