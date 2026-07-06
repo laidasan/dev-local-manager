@@ -11,9 +11,10 @@ final class TerminalService {
         app: TerminalApp,
         repoPath: String,
         command: String,
-        nodeVersion: String? = nil
+        nodeVersion: String? = nil,
+        nodeManager: NodeManager = .nvm
     ) throws -> TerminalResult {
-        let fullCommand = buildFullCommand(command: command, nodeVersion: nodeVersion)
+        let fullCommand = buildFullCommand(command: command, nodeVersion: nodeVersion, nodeManager: nodeManager)
         let script: String
 
         switch app {
@@ -36,9 +37,10 @@ final class TerminalService {
         windowReference: String,
         repoPath: String,
         command: String,
-        nodeVersion: String? = nil
+        nodeVersion: String? = nil,
+        nodeManager: NodeManager = .nvm
     ) throws -> TerminalResult {
-        let fullCommand = buildFullCommand(command: command, nodeVersion: nodeVersion)
+        let fullCommand = buildFullCommand(command: command, nodeVersion: nodeVersion, nodeManager: nodeManager)
         let script: String
 
         switch app {
@@ -66,9 +68,9 @@ final class TerminalService {
         try? executeAppleScript(script)
     }
 
-    private func buildFullCommand(command: String, nodeVersion: String?) -> String {
+    private func buildFullCommand(command: String, nodeVersion: String?, nodeManager: NodeManager) -> String {
         if let version = nodeVersion {
-            return "nvm use \(version) && \(command)"
+            return nodeManager.wrapCommand(command, version: version)
         }
         return command
     }

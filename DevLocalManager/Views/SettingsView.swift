@@ -11,6 +11,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 24) {
                 headerSection
                 terminalSection
+                nodeManagerSection
                 alertSection
                 repoPathsSection
             }
@@ -19,6 +20,7 @@ struct SettingsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .onAppear { settings = configService.loadSettings() }
         .onChange(of: settings.terminal) { _, _ in saveSettings() }
+        .onChange(of: settings.nodeManager) { _, _ in saveSettings() }
         .onChange(of: settings.skipSwitchAlert) { _, _ in saveSettings() }
     }
 
@@ -43,6 +45,21 @@ struct SettingsView: View {
             }
             .pickerStyle(.segmented)
             .frame(width: 250)
+        }
+    }
+
+    private var nodeManagerSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Node Version Manager")
+                .font(.headline)
+
+            Picker("", selection: $settings.nodeManager) {
+                ForEach(NodeManager.allCases, id: \.self) { manager in
+                    Text(manager.displayName).tag(manager)
+                }
+            }
+            .pickerStyle(.segmented)
+            .frame(width: 300)
         }
     }
 

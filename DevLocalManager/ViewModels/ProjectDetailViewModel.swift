@@ -69,7 +69,8 @@ final class ProjectDetailViewModel {
                 windowReference: windowRef,
                 repoPath: repoPath,
                 command: process.command,
-                nodeVersion: repo.nodeVersion
+                nodeVersion: repo.nodeVersion,
+                nodeManager: currentSettings.nodeManager
             )
 
             processService.addProcess(
@@ -133,14 +134,16 @@ final class ProjectDetailViewModel {
                             windowReference: existingWindow,
                             repoPath: repoPath,
                             command: service.command,
-                            nodeVersion: repo.nodeVersion
+                            nodeVersion: repo.nodeVersion,
+                            nodeManager: currentSettings.nodeManager
                         )
                     } else {
                         result = try terminalService.openInNewWindow(
                             app: currentSettings.terminal,
                             repoPath: repoPath,
                             command: service.command,
-                            nodeVersion: repo.nodeVersion
+                            nodeVersion: repo.nodeVersion,
+                            nodeManager: currentSettings.nodeManager
                         )
                         windowRef = result.windowReference
                         processService.setWindowReference(windowRef)
