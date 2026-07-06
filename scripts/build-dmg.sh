@@ -37,5 +37,8 @@ hdiutil create \
   -format UDZO \
   "$DMG_PATH"
 
+echo "==> Cleaning up intermediates..."
+rm -rf "$ARCHIVE_PATH" "$EXPORT_DIR"
+
 echo ""
 echo "Done! DMG is at: $DMG_PATH"

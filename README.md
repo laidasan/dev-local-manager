@@ -11,6 +11,26 @@ macOS 視窗型工具（Swift + SwiftUI），用於簡化多 repo 專案的 loca
 - 自動處理 env 變數異動，不需要手動改 `.env` 檔
 - 一鍵停止所有服務
 
+## 安裝
+
+```bash
+brew tap laidasan/tap
+brew trust laidasan/tap
+brew install --cask dev-local-manager
+```
+
+更新至最新版：
+
+```bash
+brew upgrade --cask dev-local-manager
+```
+
+解除安裝：
+
+```bash
+brew uninstall --cask dev-local-manager
+```
+
 ## 使用流程
 
 1. 撰寫專案的 `project-config.yaml`（參考下方 Config 說明）
