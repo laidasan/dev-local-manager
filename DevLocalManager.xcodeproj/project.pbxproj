@@ -19,6 +19,7 @@
 		66C6201B5AF795C67B6D2D58 /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8842D944A530069A8C57D31 /* ProjectDetailViewModel.swift */; };
 		6DD7274E7CD0CF9DB7F16023 /* EnvFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E972126D56909FF7730019 /* EnvFileService.swift */; };
 		850EB78E5935D4FAE3D50AD0 /* UTType+YAML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D8A1F8F0B8B303A74A9D2 /* UTType+YAML.swift */; };
+		AF9E9CE38337820B473393ED /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625028A0C4A16577FDE64072 /* UpdateService.swift */; };
 		C39BAA86591F3B71B8346D04 /* ProjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717358A7BD263AC50E816E6E /* ProjectConfig.swift */; };
 		C57C61EB92706362072B8567 /* TerminalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1EC13DDCE0806E1DD0EB9 /* TerminalService.swift */; };
 		D0F8AA68EF7648D1A5DAF977 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EE4A978DFFAFCDFDB62B5E /* MainView.swift */; };
@@ -33,6 +34,7 @@
 		51B300FC49110B06D4ED9F0A /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		52F9116355B636AC560A430B /* ProcessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessService.swift; sourceTree = "<group>"; };
 		5776733730855733A9C1E323 /* ProjectEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewModel.swift; sourceTree = "<group>"; };
+		625028A0C4A16577FDE64072 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		717358A7BD263AC50E816E6E /* ProjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfig.swift; sourceTree = "<group>"; };
 		719ECB26499F4B07D45B3559 /* DevLocalManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DevLocalManager.entitlements; sourceTree = "<group>"; };
 		8826949EA8C97B0B11D3D75B /* LocalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				E7E972126D56909FF7730019 /* EnvFileService.swift */,
 				52F9116355B636AC560A430B /* ProcessService.swift */,
 				8FF1EC13DDCE0806E1DD0EB9 /* TerminalService.swift */,
+				625028A0C4A16577FDE64072 /* UpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				E47D37A6C20F2328F9471F9F /* SettingsView.swift in Sources */,
 				C57C61EB92706362072B8567 /* TerminalService.swift in Sources */,
 				850EB78E5935D4FAE3D50AD0 /* UTType+YAML.swift in Sources */,
+				AF9E9CE38337820B473393ED /* UpdateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +250,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = "0.0.0-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtools.DevLocalManager;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
@@ -385,7 +389,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = "0.0.0-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtools.DevLocalManager;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;

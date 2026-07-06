@@ -25,7 +25,7 @@ struct ProjectListView: View {
                     Button(role: .destructive) {
                         viewModel.deleteProject(project)
                     } label: {
-                        Label("刪除專案", systemImage: "trash")
+                        Label("刪除專案設定", systemImage: "trash")
                     }
                 }
         }

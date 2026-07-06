@@ -46,6 +46,9 @@ struct ProjectEditView: View {
             .padding(.vertical, 12)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .onTapGesture {
+            NSApp.keyWindow?.makeFirstResponder(nil)
+        }
         .onAppear {
             viewModel.load(from: project)
         }
