@@ -1,0 +1,76 @@
+name: "My Project"
+
+environments:
+  - id: lab
+    label: "Lab API"
+    description: "呼叫 Lab 環境 API"
+  - id: mock
+    label: "Mock Server"
+    description: "使用前端 mock server"
+
+repos:
+  - id: frontend-main
+    name: "前端主站"
+    environments:
+      lab:
+        services:
+          - id: dev
+            label: "Dev Server"
+            command: "npm run dev"
+        env_file:
+          path: ".env.development.local"
+          variables:
+            NEXT_PUBLIC_API_BASE: "https://lab-api.example.com"
+            NEXT_PUBLIC_USE_MOCK: "false"
+      mock:
+        services:
+          - id: dev
+            label: "Dev Server"
+            command: "npm run dev"
+          - id: mock-server
+            label: "Mock API Server"
+            command: "npm run mock-server"
+        env_file:
+          path: ".env.development.local"
+          variables:
+            NEXT_PUBLIC_API_BASE: "http://localhost:4000"
+            NEXT_PUBLIC_USE_MOCK: "true"
+
+  - id: shared-lib
+    name: "共用元件庫"
+    environments:
+      lab:
+        services:
+          - id: build-watch
+            label: "Build Watch"
+            command: "npm run build:watch"
+      mock:
+        services:
+          - id: build-watch
+            label: "Build Watch"
+            command: "npm run build:watch"
+
+profiles:
+  - id: all-lab
+    label: "全部 Lab"
+    description: "所有服務呼叫 Lab API"
+    repos:
+      shared-lib:
+        environment: lab
+      frontend-main:
+        environment: lab
+    startup_order:
+      - shared-lib
+      - frontend-main
+
+  - id: all-mock
+    label: "全部 Mock"
+    description: "所有服務使用 Mock Server"
+    repos:
+      shared-lib:
+        environment: mock
+      frontend-main:
+        environment: mock
+    startup_order:
+      - shared-lib
+      - frontend-main

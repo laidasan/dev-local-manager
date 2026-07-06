@@ -1,0 +1,32 @@
+name: DevLocalManager
+options:
+  bundleIdPrefix: com.devtools
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+
+packages:
+  Yams:
+    url: https://github.com/jpsim/Yams.git
+    from: "5.1.3"
+
+targets:
+  DevLocalManager:
+    type: application
+    platform: macOS
+    sources:
+      - DevLocalManager
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.devtools.DevLocalManager
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 1
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.developer-tools"
+        SWIFT_VERSION: "6.0"
+    dependencies:
+      - package: Yams
+    entitlements:
+      path: DevLocalManager/Resources/DevLocalManager.entitlements
+      properties:
+        com.apple.security.automation.apple-events: true
+        com.apple.security.app-sandbox: false
