@@ -80,11 +80,11 @@ final class TerminalService {
     private func buildTerminalAppNewWindowScript(repoPath: String, command: String) -> String {
         """
         tell application "Terminal"
-            activate
             set newTab to do script "cd \\"\(repoPath)\\" && \(command)"
-            set windowId to id of window 1
-            set tabId to id of newTab
-            return (windowId as text) & "\n" & (tabId as text)
+            activate
+            set windowId to id of front window
+            set tabTty to tty of newTab
+            return (windowId as text) & "\n" & tabTty
         end tell
         """
     }
@@ -92,14 +92,14 @@ final class TerminalService {
     private func buildTerminalAppTabInWindowScript(windowId: String, repoPath: String, command: String) -> String {
         """
         tell application "Terminal"
-            repeat with w in windows
-                if (id of w) as text is "\(windowId)" then
-                    set current settings of w to current settings of w
-                    do script "cd \\"\(repoPath)\\" && \(command)" in w
-                    set newTab to last tab of w
-                    return id of newTab
-                end if
-            end repeat
+            set targetWindow to window id \(windowId)
+            set index of targetWindow to 1
+        end tell
+        tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
+        delay 0.5
+        tell application "Terminal"
+            set newTab to do script "cd \\"\(repoPath)\\" && \(command)" in selected tab of front window
+            return tty of newTab
         end tell
         """
     }
@@ -109,7 +109,7 @@ final class TerminalService {
         tell application "Terminal"
             repeat with w in windows
                 repeat with t in tabs of w
-                    if (id of t) as text is "\(tabReference)" then
+                    if tty of t is "\(tabReference)" then
                         close t
                         return
                     end if
