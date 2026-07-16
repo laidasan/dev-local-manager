@@ -106,13 +106,17 @@ final class TerminalService {
 
     private func buildTerminalAppCloseScript(tabReference: String) -> String {
         """
+        if application "Terminal" is not running then return
         tell application "Terminal"
+            if (count of windows) is 0 then return
             repeat with w in windows
                 repeat with t in tabs of w
-                    if tty of t is "\(tabReference)" then
-                        close t
-                        return
-                    end if
+                    try
+                        if tty of t is "\(tabReference)" then
+                            close t
+                            return
+                        end if
+                    end try
                 end repeat
             end repeat
         end tell

@@ -51,9 +51,7 @@ final class ProcessService {
 
         let process = session.processes[index]
 
-        if let pid = process.pid {
-            kill(pid, SIGTERM)
-        }
+        killProcess(process)
 
         if let tabRef = process.tabReference {
             terminalService.closeTab(app: terminalApp, tabReference: tabRef)
@@ -66,12 +64,8 @@ final class ProcessService {
         guard let session = runningSession else { return }
 
         for process in session.processes where process.isRunning {
-            if let pid = process.pid {
-                kill(pid, SIGTERM)
-            }
+            killProcess(process)
         }
-
-        killTerminalProcesses()
 
         for process in session.processes where process.isRunning {
             if let tabRef = process.tabReference {
@@ -82,17 +76,20 @@ final class ProcessService {
         runningSession = nil
     }
 
-    private func killTerminalProcesses() {
-        guard let session = runningSession else { return }
-
-        for process in session.processes where process.isRunning {
-            let script = """
-            do shell script "pkill -f '\(process.repoId)' 2>/dev/null || true"
-            """
+    private func killProcess(_ process: RunningProcess) {
+        switch terminalApp {
+        case .terminal:
+            guard let tabRef = process.tabReference else { return }
+            let ttyName = (tabRef as NSString).lastPathComponent
             let proc = Process()
-            proc.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
-            proc.arguments = ["-e", script]
+            proc.executableURL = URL(fileURLWithPath: "/bin/sh")
+            proc.arguments = ["-c", "pkill -t \(ttyName) 2>/dev/null; sleep 0.2; pkill -9 -t \(ttyName) 2>/dev/null || true"]
             try? proc.run()
+            proc.waitUntilExit()
+        case .iterm2:
+            if let pid = process.pid {
+                kill(pid, SIGTERM)
+            }
         }
     }
 }
